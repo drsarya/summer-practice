@@ -2,32 +2,39 @@ package ru.example.bookstore.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import ru.example.bookstore.entity.Book;
-import ru.example.bookstore.service.BookService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import ru.example.bookstore.dto.BookDto;
+import ru.example.bookstore.facade.BookFacade;
 
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/book", produces = "application/json")
 @Slf4j
 public class BookController {
-    private final BookService bookService;
+    private final BookFacade bookFacade;
 
     @Autowired
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
+    public BookController(BookFacade bookFacade) {
+        this.bookFacade = bookFacade;
     }
 
-    @GetMapping("/book")
-    public List<Book> getBooks() {
-        return bookService.getBooks();
+    @GetMapping
+    public List<BookDto> getBooks() {
+        return bookFacade.getBooks();
     }
 
-    @GetMapping("/book/{id}")
-    public String getBookById(@PathVariable Long id) {
+    @GetMapping("/{id}")
+    public BookDto getBookById(@PathVariable Integer id) {
         log.info("User requested book with id: {} ", id);
-        return "Book1";
+        return bookFacade.getBookById(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createBook(@RequestBody BookDto bookDto) {
+        log.info("User created a book ");
+        bookFacade.createBook(bookDto);
     }
 }

@@ -7,24 +7,19 @@ import lombok.NoArgsConstructor;
 import ru.example.bookstore.handler.ValidationErrorTerms;
 
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookDto {
+public class BookGroupDto {
     @JsonProperty
     private Integer id;
 
     @JsonProperty
-    @NotNull(message = ValidationErrorTerms.AUTHOR_MUST_BE_SET)
-    private String author;
+    @NotNull(message = ValidationErrorTerms.BOOK_ID_MUST_BE_SET)
+    private Integer bookId;
 
     @JsonProperty
-    @NotNull(message = ValidationErrorTerms.TITLE_MUST_BE_SET)
-    private String title;
-
-    @JsonProperty
-    @NotNull(message = ValidationErrorTerms.PRICE_MUST_BE_SET)
-    private BigDecimal price;
+    @NotNull(message = ValidationErrorTerms.NAME_MUST_BE_SET)
+    private Integer nameGroupId;
 }

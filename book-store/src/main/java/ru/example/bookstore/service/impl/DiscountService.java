@@ -1,4 +1,4 @@
-package ru.example.bookstore.service;
+package ru.example.bookstore.service.impl;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
