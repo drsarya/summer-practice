@@ -1,7 +1,5 @@
-drop table IF EXISTS book;
-drop table IF EXISTS group_name;
-drop table IF EXISTS group_books;
-drop table IF EXISTS users_bookstore;
+
+drop table IF EXISTS users;
 drop table IF EXISTS user_reviews;
 
 
@@ -9,7 +7,8 @@ drop table IF EXISTS user_reviews;
 create TABLE users
 (
     id     INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(300) NOT NULL
+    username VARCHAR(300) NOT NULL,
+    UNIQUE (username )
 );
 
 create TABLE user_reviews
@@ -32,8 +31,8 @@ insert into user_reviews (id, user_id,book_id, review  )
 values (1, 1, 1, 'Гипер-классная книга!!' ),
        (2, 2, 2, 'Замечтальная книга!'),
        (3, 3, 3, 'Очень странный сюжет'),
-       (4, 4, 4, 'Подчерпнула для себя много нового' ),
-       (5, 3, 5, 'Буду перечитывать много раз!!'),
+       (4, 4, 4, 'Почерпнула для себя много нового' ),
+       (5, 3, 5, 'Буду перечитывать не один раз!!'),
        (6, 4, 1, 'Не очень...' ),
        (7, 3, 2, 'Очень понравилось!!' ),
        (8, 4, 3, 'Столько сюжетных поворотов!!' ),

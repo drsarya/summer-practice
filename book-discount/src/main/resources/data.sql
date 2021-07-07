@@ -4,7 +4,8 @@ create TABLE discount
 (
     id     INT AUTO_INCREMENT PRIMARY KEY,
     group_name VARCHAR(10) NOT NULL,
-    discount_value DECIMAL NOT NULL
+    discount_value DECIMAL NOT NULL,
+    UNIQUE (group_name, discount_value )
 );
 
 insert into discount(id, group_name, discount_value)
