@@ -1,24 +1,22 @@
 package ru.example.users.db.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-@Builder
+import javax.persistence.*;
+
 @Data
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name = "user_reviews")
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String review;
-    private Integer bookId;
-    private Integer userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
+    @Column(name = "review")
+    String textReview;
+
+    @Column(name = "book_id")
+    Integer bookId;
+    @Column(name = "user_id")
+    Integer userId;
 }

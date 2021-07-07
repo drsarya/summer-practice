@@ -1,17 +1,30 @@
 package ru.example.users.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Immutable;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.*;
+import ru.example.users.handler.ValidationErrorTerms;
 
-@Getter
+
+import javax.validation.constraints.NotNull;
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Immutable
 public class ReviewDto {
-    private Integer id;
-    private String review;
-    private Integer bookId;
-    private Integer userId;
+
+    @JsonProperty
+    Integer id;
+
+    @NotNull(message = ValidationErrorTerms.NAME_MUST_BE_SET)
+    @JsonProperty
+    String textReview;
+
+    @NotNull(message = ValidationErrorTerms.BOOK_ID_MUST_BE_SET)
+    @JsonProperty
+    Integer bookId;
+
+    @NotNull(message = ValidationErrorTerms.USER_ID_MUST_BE_SET)
+    @JsonProperty
+    Integer userId;
+
 }

@@ -4,5 +4,5 @@ import ru.example.users.db.entity.User;
 import ru.example.users.dto.UserDto;
 
 public interface UserFacade {
-   User addUser(UserDto userDto);
+   UserDto addUser(UserDto userDto);
 }

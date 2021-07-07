@@ -9,8 +9,8 @@ import ru.example.users.dto.UserDto;
 @RestController
 @RequestMapping(path = "/user", produces = "application/json")
 public class UserController {
-
-    ResponseEntity addUser(UserDto userDto) {
+    @PostMapping(consumes = "application/json")
+    ResponseEntity addUser(@RequestBody UserDto userDto) {
         return new ResponseEntity<>("json", HttpStatus.OK);
     }
 

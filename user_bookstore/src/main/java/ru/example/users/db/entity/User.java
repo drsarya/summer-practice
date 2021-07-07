@@ -1,22 +1,18 @@
 package ru.example.users.db.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-@Builder
-@Data
+import javax.persistence.*;
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
+@Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String userName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
+    @Column(name = "username")
+    String userName;
 }

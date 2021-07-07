@@ -6,7 +6,7 @@ import ru.example.users.dto.ReviewDto;
 import java.util.List;
 
 public interface ReviewService {
-    Review addReview(ReviewDto reviewDto);
+    ReviewDto addReview(ReviewDto reviewDto);
 
     List<ReviewDto> getReviewsByBookId(Integer bookId);
 }
