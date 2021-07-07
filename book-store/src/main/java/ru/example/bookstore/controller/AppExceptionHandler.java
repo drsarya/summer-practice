@@ -10,6 +10,7 @@ import ru.example.bookstore.handler.ValidationErrorTerms;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.net.ConnectException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -37,4 +38,10 @@ public class AppExceptionHandler {
         ErrorModel errorModels = new ErrorModel("Error", e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorModels);
     }
+    @ExceptionHandler(ConnectException.class)
+    ResponseEntity<ErrorModel> handleConstraintViolationException(ConnectException e) {
+        ErrorModel errorModels = new ErrorModel("Error", e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorModels);
+    }
+
 }

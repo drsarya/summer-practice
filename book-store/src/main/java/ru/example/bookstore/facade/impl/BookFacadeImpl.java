@@ -1,6 +1,7 @@
 package ru.example.bookstore.facade.impl;
 
 import org.springframework.stereotype.Service;
+import ru.example.bookstore.dto.BookDiscountDto;
 import ru.example.bookstore.dto.BookDto;
 import ru.example.bookstore.facade.BookFacade;
 import ru.example.bookstore.service.BookService;
@@ -29,5 +30,10 @@ public class BookFacadeImpl implements BookFacade {
     @Override
     public List<BookDto> getBooks() {
         return bookService.getBooks();
+    }
+
+    @Override
+    public List<BookDiscountDto> getGroupBooksWithDiscounts(boolean isApplied) {
+        return bookService.getGroupBooksWithDiscounts(isApplied);
     }
 }

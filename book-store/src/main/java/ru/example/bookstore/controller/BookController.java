@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import ru.example.bookstore.dto.BookDiscountDto;
 import ru.example.bookstore.dto.BookDto;
 import ru.example.bookstore.facade.BookFacade;
 
@@ -29,6 +30,11 @@ public class BookController {
     public BookDto getBookById(@PathVariable Integer id) {
         log.info("User requested book with id: {} ", id);
         return bookFacade.getBookById(id);
+    }
+
+    @GetMapping("/discount/{isApplied}")
+    public List<BookDiscountDto> getGroupBooksWithDiscounts(@PathVariable Boolean isApplied) {
+        return bookFacade.getGroupBooksWithDiscounts(isApplied);
     }
 
     @PostMapping

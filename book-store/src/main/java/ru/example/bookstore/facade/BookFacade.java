@@ -1,6 +1,7 @@
 package ru.example.bookstore.facade;
 
 import org.springframework.validation.annotation.Validated;
+import ru.example.bookstore.dto.BookDiscountDto;
 import ru.example.bookstore.dto.BookDto;
 
 import javax.validation.Valid;
@@ -14,4 +15,7 @@ public interface BookFacade {
     BookDto getBookById(Integer id);
 
     List<BookDto> getBooks();
+
+    List<BookDiscountDto> getGroupBooksWithDiscounts(boolean isApplied);
+
 }
