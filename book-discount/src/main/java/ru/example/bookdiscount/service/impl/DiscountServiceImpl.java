@@ -7,7 +7,10 @@ import ru.example.bookdiscount.dto.DiscountDto;
 import ru.example.bookdiscount.mapper.DiscountMapper;
 import ru.example.bookdiscount.service.DiscountService;
 
+import java.math.BigDecimal;
 import java.util.List;
+
+import static ru.example.bookdiscount.handler.ValidationErrorTerms.GROUP_NOT_FOUND;
 
 @Service
 public class DiscountServiceImpl implements DiscountService {
@@ -27,5 +30,12 @@ public class DiscountServiceImpl implements DiscountService {
     @Override
     public void create(DiscountDto discountDto) {
         discountRepository.save(discountMapper.discountDtoToDiscount(discountDto));
+    }
+
+    @Override
+    public BigDecimal getDiscountByGroupName(String name) {
+        Discount discount = discountRepository.findFirstByGroupName(name);
+        if (discount != null) return discount.getPercent();
+        throw new IllegalArgumentException(GROUP_NOT_FOUND);
     }
 }

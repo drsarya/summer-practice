@@ -1,5 +1,6 @@
 package ru.example.bookdiscount.facade.impl;
 
+import com.sun.istack.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import ru.example.bookdiscount.dto.DiscountDto;
@@ -7,6 +8,7 @@ import ru.example.bookdiscount.facade.DiscountFacade;
 import ru.example.bookdiscount.service.DiscountService;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -26,5 +28,10 @@ public class DiscountFacadeImpl implements DiscountFacade {
     @Override
     public void create(@Valid DiscountDto discountDto) {
         discountService.create(discountDto);
+    }
+
+    @Override
+    public BigDecimal getDiscountByGroupName(@NotNull String name) {
+        return discountService.getDiscountByGroupName(name);
     }
 }

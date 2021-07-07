@@ -6,4 +6,5 @@ import ru.example.bookdiscount.db.entity.Discount;
 import java.util.List;
 
 public interface DiscountRepository extends CrudRepository<Discount, Integer> {
+    Discount findFirstByGroupName(String name);
 }

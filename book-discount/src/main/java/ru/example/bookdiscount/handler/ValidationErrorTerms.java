@@ -7,7 +7,7 @@ public class ValidationErrorTerms {
     public static final String KEY_NOT_UNIQUE = "error of unique";
     public static final String GROUP_NAME_MUST_BE_SET = "group must be set";
     public static final String PERCENT_MUST_BE_SET = "percent must be set";
-
+    public static final String GROUP_NOT_FOUND = "Группа не найдена";
     private static final Map<String, String> ERRORS = new HashMap<String, String>() {
         {
             put(KEY_NOT_UNIQUE, "Повторяющийся ник");

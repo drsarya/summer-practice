@@ -33,4 +33,9 @@ public class AppExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorModels);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    ResponseEntity<ErrorModel> handleConstraintViolationException(IllegalArgumentException e) {
+        ErrorModel errorModels = new ErrorModel("Error", e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorModels);
+    }
 }

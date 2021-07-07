@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.example.bookdiscount.dto.DiscountDto;
 import ru.example.bookdiscount.facade.DiscountFacade;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -19,9 +20,10 @@ public class DiscountController {
         this.discountFacade = discountFacade;
     }
 
-    @GetMapping
-    public ResponseEntity<Integer> getDiscount() {
-        return new ResponseEntity<>(20, HttpStatus.OK);
+    @GetMapping("/{name}")
+    public ResponseEntity<Integer> getDiscount(@PathVariable String name) {
+        BigDecimal bigDecimal = discountFacade.getDiscountByGroupName(name);
+        return new ResponseEntity<>(bigDecimal.intValue(), HttpStatus.OK);
     }
 
     @GetMapping("/all")
