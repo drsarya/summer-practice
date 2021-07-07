@@ -2,10 +2,7 @@
 Repository for Java Summer Practice
 
 В проекте содержатся следующие микросервисы: 
-## -User-BookStore 
-## -Book-Store 
-## -Book-Discount  
- 
+
 ## User-BookStore  
 -создание пользователей,
 
