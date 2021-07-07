@@ -1,4 +1,4 @@
-package ru.example.user_bookstore;
+package ru.example.users;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
