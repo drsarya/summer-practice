@@ -1,13 +1,17 @@
 # summer-practice
 Repository for Java Summer Practice
 В проекте содержатся следующие микросервисы: 
-User-BookStore,
-Book-Store,
-Book-Discount. 
+-User-BookStore,
+
+-Book-Store,
+
+-Book-Discount. 
  
 User-BookStore отвечает за
 -создание пользователей,
+
 -написание к книгам отзывов,
+
 -получение отзывов по bookId.
 
 Book-Store отвечает за 
