@@ -62,13 +62,17 @@ public class BookServiceImpl implements BookService {
 
         List<BookDiscountDto> discountDtos = new ArrayList<>();
         for (Group group : groups) {
-            Integer valueDisc = discountService.getDiscount(group.getName());
+            Integer valueDisc = Math.abs(discountService.getDiscount(group.getName()));
             List<BookGroup> booksFromGroup = bookGroupRepository.findAllByNameGroupId(group.getId());
             for (BookGroup groupBook : booksFromGroup) {
                 Book book = bookRepository.findById(groupBook.getBookId()).get();
                 if (isApplied) {
-                    BigDecimal newPrice = book.getPrice().subtract(book.getPrice().multiply(BigDecimal.valueOf(valueDisc)));
-                    book.setPrice(newPrice);
+                    BigDecimal newPrice = book.getPrice().subtract(book.getPrice().multiply(BigDecimal.valueOf(valueDisc).divide(BigDecimal.valueOf(100))));
+                    if (newPrice.intValue() <= 0) {
+                        book.setPrice(BigDecimal.valueOf(0));
+                    } else {
+                        book.setPrice(newPrice);
+                    }
                 }
                 BookDto bookDto = bookMapper.toBookDto(book);
                 BookDiscountDto bookDiscountDto = new BookDiscountDto(valueDisc, group.getName(), bookDto);

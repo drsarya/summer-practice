@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface DiscountService {
     List<DiscountDto> getAllDiscounts();
+
     void create(DiscountDto discountDto);
 
     BigDecimal getDiscountByGroupName(String name);

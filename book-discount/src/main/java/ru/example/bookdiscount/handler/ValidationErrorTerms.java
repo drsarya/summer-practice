@@ -8,6 +8,8 @@ public class ValidationErrorTerms {
     public static final String GROUP_NAME_MUST_BE_SET = "group must be set";
     public static final String PERCENT_MUST_BE_SET = "percent must be set";
     public static final String GROUP_NOT_FOUND = "Группа не найдена";
+    public static final String ERROR_OF_PERCENT_VALUE = "Введите положительное значене скидки";
+
     private static final Map<String, String> ERRORS = new HashMap<String, String>() {
         {
             put(KEY_NOT_UNIQUE, "Повторяющийся ник");

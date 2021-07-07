@@ -9,9 +9,9 @@ create TABLE discount
 );
 
 insert into discount(id, group_name, discount_value)
-values (1, 'abc111',  12 ),
+values (1, 'abc111',  -12 ),
        (2, 'abc123',  13 ),
-       (3, 'abvc123', 50 ),
+       (3, 'abvc123', 120 ),
        (4, 'rew123',  14 ),
        (5, 'U78tre',  23 );
 
