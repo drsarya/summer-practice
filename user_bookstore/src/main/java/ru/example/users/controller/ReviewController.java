@@ -31,7 +31,6 @@ public class ReviewController {
 
     @GetMapping(value = "/{bookId}")
     List<ReviewDto> getReviewsByBookId(@PathVariable Integer bookId) {
-        System.out.println(bookId);
-        return null;
+        return reviewFacade.getReviewsByBookId(bookId);
     }
 }
